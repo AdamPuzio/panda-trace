@@ -1,0 +1,27 @@
+{
+  "name": "@panda/trace",
+  "version": "0.0.1",
+  "description": "Panda Trace Library",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.mts",
+  "exports": {
+    ".": {
+      "require": "./dist/index.js",
+      "import": "./dist/index.mjs",
+      "types": "./dist/index.d.mts"
+    }
+  },
+  "scripts": {
+    "start": "tsup --watch",
+    "build": "tsup build",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Adam T. Puzio",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/node": "^20.14.9",
+    "tsup": "^8.1.0",
+    "typescript": "^5.5.2"
+  }
+}
