@@ -1,6 +1,6 @@
 {
   "name": "@panda/trace",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Panda Trace Library",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
@@ -20,6 +20,7 @@
   "author": "Adam T. Puzio",
   "license": "MIT",
   "devDependencies": {
+    "@panda/colors": "*",
     "@types/node": "^20.14.9",
     "tsup": "^8.1.0",
     "typescript": "^5.5.2"

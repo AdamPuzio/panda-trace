@@ -1,4 +1,6 @@
 
+import Colors from '@panda/colors'
+
 const traceConfig = ({
   on = process.env.TRACE ? true : false,
   tags = [],
@@ -128,12 +130,17 @@ export class Trace {
   }
 
   static color (str, color) {
-    return `\x1b[38;5;${color}m${str}\x1b[0m`
+    // Delegates to @panda/colors instead of hand-rolling ANSI escape codes
+    // — per panda-opencode/DECISIONS.md, @panda/trace previously
+    // reimplemented a subset of exactly what @panda/colors already
+    // provides. 'ansi:<n>' maps to the same 256-color foreground escape
+    // sequence (`\x1b[38;5;<n>m`) this method always produced.
+    return Colors.render(str, [`ansi:${color}`])
   }
 
   static colorString (str) {
     const color = Math.abs([...str].reduce((hash, char) => ((hash << 5) - hash) + char.charCodeAt(0), 0) | 0) % 216 + 16
-    return `\x1b[38;5;${color}m[${str}]\x1b[0m`
+    return Colors.render(`[${str}]`, [`ansi:${color}`])
   }
 
   static log (msg:any, tags?:string[], label?:string) {
